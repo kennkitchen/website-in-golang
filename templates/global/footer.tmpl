@@ -1,0 +1,23 @@
+{{ define "global/footer.tmpl" }}
+    <footer class="default-footer">
+        <div class="w3-bar kk-medium-blue w3-padding">
+            <p class="w3-center w3-small w3-padding">Copyright 1964-2022, Kenneth Kitchen.</p>
+        </div>
+        <div>
+            <div class="w3-bar kk-darkest-blue w3-padding">
+            </div>
+        </div>
+    </footer>
+    <script>
+        function menuFunction() {
+            var x = document.getElementById("demo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+</html>
+{{ end }}
