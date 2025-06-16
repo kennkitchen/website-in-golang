@@ -23,6 +23,9 @@ func RunServer() {
 		"templates/home.tmpl",
 		"templates/about.tmpl",
 		"templates/contact.tmpl",
+		"templates/register.tmpl",
+		"templates/login.tmpl",
+		"templates/logout.tmpl",
 		"templates/global/header.tmpl",
 		"templates/global/footer.tmpl")
 	router.Static("/public", "public")
@@ -30,7 +33,9 @@ func RunServer() {
 	router.GET("/", controllers.DisplayPage)
 	router.GET("/about", controllers.DisplayPage)
 	router.GET("/contact", controllers.DisplayPage)
-
+	router.GET("/register", controllers.DisplayPage)
+	router.GET("/login", controllers.DisplayPage)
+	router.GET("/logout", controllers.DisplayPage)
 	routerAddr := "127.0.0.1:" + os.Getenv("LISTEN_PORT")
 
 	err = router.Run(routerAddr)

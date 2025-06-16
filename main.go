@@ -42,7 +42,6 @@ func main() {
 	}
 
 	log.Info("Connected!")
-	// end test DB connection
 
 	config.RunServer()
 }

@@ -31,6 +31,21 @@ func DisplayPage(c *gin.Context) {
 		c.HTML(http.StatusOK, "contact.tmpl", gin.H{
 			"title": "Kenn Kitchen",
 		})
+	case "/register":
+		log.Info("Register chosen.")
+		c.HTML(http.StatusOK, "register.tmpl", gin.H{
+			"title": "Kenn Kitchen",
+		})
+	case "/login":
+		log.Info("Login chosen.")
+		c.HTML(http.StatusOK, "login.tmpl", gin.H{
+			"title": "Kenn Kitchen",
+		})
+	case "/logout":
+		log.Info("Logout chosen.")
+		c.HTML(http.StatusOK, "logout.tmpl", gin.H{
+			"title": "Kenn Kitchen",
+		})
 	}
 
 }
