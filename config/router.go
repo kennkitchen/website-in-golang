@@ -24,6 +24,7 @@ func RunServer() {
 		"templates/about.tmpl",
 		"templates/contact.tmpl",
 		"templates/register.tmpl",
+		"templates/regresult.tmpl",
 		"templates/login.tmpl",
 		"templates/logout.tmpl",
 		"templates/global/header.tmpl",
@@ -34,6 +35,7 @@ func RunServer() {
 	router.GET("/about", controllers.DisplayPage)
 	router.GET("/contact", controllers.DisplayPage)
 	router.GET("/register", controllers.DisplayPage)
+	router.POST("/register", controllers.AddUser)
 	router.GET("/login", controllers.DisplayPage)
 	router.GET("/logout", controllers.DisplayPage)
 	routerAddr := "127.0.0.1:" + os.Getenv("LISTEN_PORT")

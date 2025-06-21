@@ -2,6 +2,12 @@
 <div class="w3-container">
   <h1>{{ .title }}</h1>
   <h2>Register Page</h2>
-  <p>Future home of the registration page.</p>
+  <form action="/register" method="POST">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" placeholder="someuser"><br>
+    <label for="password">Last name:</label><br>
+    <input type="text" id="password" name="password" placeholder="somepassword"><br><br>
+    <input type="submit" value="Submit">
+  </form> 
 </div>
 {{ template "global/footer.tmpl" .}}

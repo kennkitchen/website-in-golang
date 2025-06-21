@@ -2,9 +2,8 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
-	_ "github.com/lib/pq"
 	log "github.com/sirupsen/logrus"
 	"kennkitchen/config"
 	"os"
@@ -24,22 +23,11 @@ func main() {
 
 	// TODO remove
 	// testing DB connection
-	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 5432, "kennusr", "secret", "kenndb")
-
-	// open database
-	db, err := sql.Open("postgres", psqlconn)
+	db, err := sql.Open("mysql", os.Getenv("DBUSER")+":"+os.Getenv("DBPASS")+"@tcp("+os.Getenv("DBHOST")+":"+os.Getenv("DBPORT")+")/"+os.Getenv("DBNAME")+"?tls=skip-verify&autocommit=true")
 	if err != nil {
-		log.Fatal("Unabled to connect to database")
+		log.Fatal(err)
 	}
-
-	// close database
 	defer db.Close()
-
-	// check db
-	err = db.Ping()
-	if err != nil {
-		log.Fatal("No response from database")
-	}
 
 	log.Info("Connected!")
 
