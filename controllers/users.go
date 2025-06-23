@@ -6,6 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
+	"kennkitchen/models"
+	"kennkitchen/utils"
 	"net/http"
 	"os"
 )
@@ -19,6 +21,7 @@ func AddUser(c *gin.Context) {
 	log.Info("User Controller logging activated.")
 
 	username := c.PostForm("username")
+	email := username + "@gmail.com"
 	password := c.PostForm("password")
 
 	log.Info("Username: ", username)
@@ -39,14 +42,18 @@ func AddUser(c *gin.Context) {
 	//}
 
 	// TODO add a password confirmation field
-	hashedPassword, _ := hashPassword(password)
+	hashedPassword, _ := utils.HashPassword(password)
 	//users[username] = Login{
 	//	HashedPassword: hashedPassword,
 	//}
-
 	log.Info("Hashed Password: ", hashedPassword)
 
 	// TODO insert new user into database
+	_, err = models.InsertUserRow(email, password)
+	if err != nil {
+		log.Error(err)
+	}
+
 	// TODO (maybe much later) do a confirmation email
 
 	c.HTML(http.StatusOK, "regresult.tmpl", gin.H{

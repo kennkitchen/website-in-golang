@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
@@ -23,13 +22,13 @@ func main() {
 
 	// TODO remove
 	// testing DB connection
-	db, err := sql.Open("mysql", os.Getenv("DBUSER")+":"+os.Getenv("DBPASS")+"@tcp("+os.Getenv("DBHOST")+":"+os.Getenv("DBPORT")+")/"+os.Getenv("DBNAME")+"?tls=skip-verify&autocommit=true")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-
-	log.Info("Connected!")
+	//db, err := sql.Open("mysql", os.Getenv("DBUSER")+":"+os.Getenv("DBPASS")+"@tcp("+os.Getenv("DBHOST")+":"+os.Getenv("DBPORT")+")/"+os.Getenv("DBNAME")+"?tls=skip-verify&autocommit=true")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//defer db.Close()
+	//
+	//log.Info("Connected!")
 
 	config.RunServer()
 }
